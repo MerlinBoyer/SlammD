@@ -21,6 +21,7 @@ export class HomePage {
   constructor(public navCtrl: NavController, private geolocation: Geolocation, private ble: BLE, public sms: SMS) {
     this.latitude = 0;
     this.longitude = 0;
+    this.isScanning = false;
   }
 
   onClickLocation() {
@@ -40,7 +41,6 @@ export class HomePage {
 
 
   scan() {
-    console.log('Start Scan');
     this.devices = [];
     this.isScanning = true;
     this.ble.startScan([]).subscribe(device => {

@@ -17,6 +17,7 @@
     Test connexion bluetooth LE
   </p>
   <button class="button-scan" (click)="scan()">SCAN</button>
+  <p>scanning ? {{isScanning}}</p>
   <ion-list inset>
     <ion-item-sliding *ngFor="let device of devices" #slidingItem>
       <button ion-item (click)="connectToDevice(device)">{{device.id}}&nbsp;{{device.name}}
