@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {BLE} from "@ionic-native/ble";
 import {SMS} from "@ionic-native/sms";
+import {Geolocation} from "@ionic-native/geolocation";
 
 
 @Component({
@@ -12,10 +13,30 @@ export class HomePage {
   test;
   devices = [];
   isScanning = false;
+  public latitude: number;
+  public longitude: number;
+  public indicator: boolean = false;
+  private displayError: any;
 
-  constructor(public navCtrl: NavController, private ble: BLE, public sms: SMS) {
+  constructor(public navCtrl: NavController, private geolocation: Geolocation, private ble: BLE, public sms: SMS) {
+    this.latitude = 0;
+    this.longitude = 0;
   }
 
+  onClickLocation() {
+    this.indicator = !this.indicator;
+    var options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };
+    this.geolocation.getCurrentPosition( options ).then((resp) => {
+      this.latitude = resp.coords.latitude;
+      this.longitude = resp.coords.longitude;
+    }).catch((error) => {
+      this.displayError = error.message;
+    });
+  }
 
 
   scan() {
