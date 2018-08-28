@@ -84,4 +84,6 @@
     <plugin name="cordova-plugin-geolocation" spec="https://github.com/apache/cordova-plugin-geolocation.git" />
     <engine name="ios" spec="4.5.5" />
     <engine name="android" spec="^7.0.0" />
+    <plugin name="cordova-plugin-ble-central" spec="^1.2.2" />
+    <plugin name="cordova-sms-plugin" spec="^0.1.13" />
 </widget>

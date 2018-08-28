@@ -12,6 +12,10 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import {BLE} from "@ionic-native/ble";
+import {SMS} from "@ionic-native/sms";
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -36,7 +40,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     StatusBar,
     SplashScreen,
     Geolocation,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    BLE,
+    SMS
   ]
 })
 export class AppModule {}
