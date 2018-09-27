@@ -7,7 +7,7 @@ import {Geolocation} from "@ionic-native/geolocation";
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'bluetooth.html'
 })
 export class HomePage {
   test;
@@ -112,11 +112,11 @@ export class HomePage {
     const options = {
       replaceLineBreaks: false, // true to replace \n by a new line, false by default
       android: {
-        intent: 'INTENT' // send SMS with the native android SMS messaging
+        intent: '' // send SMS with the native android SMS messaging
         //intent: '' // send SMS without open any other app
         //intent: 'INTENT' // send SMS inside a default SMS app
       }
     };
-    this.sms.send('0899314654', 'coucou toi', options)
+    this.sms.send('0625336092', 'coucou toi', options)
   }
 }
