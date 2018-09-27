@@ -17,6 +17,7 @@ export class HomePage {
   public longitude: number;
   public indicator: boolean = false;
   private displayError: any;
+  public error_ble;
 
   constructor(public navCtrl: NavController, private geolocation: Geolocation, private ble: BLE, public sms: SMS) {
     this.latitude = 0;
@@ -40,21 +41,50 @@ export class HomePage {
 
 
   scan() {
-    console.log('Start Scan');
-    this.devices = [];
-    this.isScanning = true;
-    this.ble.startScan([]).subscribe(device => {
-      this.devices.push(device);
-    });
+    const ref = this;
+    this.ble.isEnabled()
+      .then( function () {
+        console.log('Start Scan');
+        ref.devices = [];
+        ref.isScanning = true;
+        ref.ble.startScan([]).subscribe(device => {
+          ref.devices.push(device);
+        },
+          error => console.log(error)
+        );
 
-    setTimeout(() => {
-      this.ble.stopScan().then(() => {
-        console.log('Scanning has stopped');
-        console.log(JSON.stringify(this.devices))
-        this.isScanning = false;
-      });
-      this.test = JSON.stringify(this.devices);
-    }, 5000);
+        setTimeout(() => {
+          ref.error_ble =
+          ref.ble.stopScan().then(() => {
+            console.log('Scanning has stopped');
+            console.log(JSON.stringify(ref.devices))
+            ref.isScanning = false;
+          });
+          ref.test = JSON.stringify(ref.devices);
+        }, 5000);
+      })
+      .catch(function () {
+        ref.ble.enable().then( function () {
+          console.log('Start Scan');
+          ref.devices = [];
+          ref.isScanning = true;
+          ref.ble.startScan([]).subscribe(device => {
+              ref.devices.push(device);
+            },
+            error => console.log(error)
+          );
+
+          setTimeout(() => {
+            ref.error_ble =
+              ref.ble.stopScan().then(() => {
+                console.log('Scanning has stopped');
+                console.log(JSON.stringify(ref.devices))
+                ref.isScanning = false;
+              });
+            ref.test = JSON.stringify(ref.devices);
+          }, 5000);
+        })
+      })
   }
 
   connectToDevice(device) {
@@ -78,6 +108,14 @@ export class HomePage {
   }
 
   sendSMS() {
-    this.sms.send('0899314654', 'coucou toi')
+    const options = {
+      replaceLineBreaks: false, // true to replace \n by a new line, false by default
+      android: {
+        intent: 'INTENT' // send SMS with the native android SMS messaging
+        //intent: '' // send SMS without open any other app
+        //intent: 'INTENT' // send SMS inside a default SMS app
+      }
+    };
+    this.sms.send('0899314654', 'coucou toi', options)
   }
 }
