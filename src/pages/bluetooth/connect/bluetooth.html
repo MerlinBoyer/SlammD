@@ -1,29 +1,8 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content padding>
-  <p>coucou toi</p>
-  <button (click)="onClickLocation()">get location</button>
-  <p>Latitude : {{latitude}}</p>
-  <p>Longitude : {{longitude}}</p>
-  <p>indic : {{indicator}}</p>
-  <p>error : {{displayError}}</p>
-  <p>
-    Test connexion bluetooth LE
-  </p>
-  <button class="button-scan" (click)="scan()">SCAN</button>
-  <p>scanning ? {{isScanning}}</p>
-  <ion-list inset>
-    <ion-item-sliding *ngFor="let device of devices" #slidingItem>
-      <button ion-item (click)="connectToDevice(device)">{{device.id}}&nbsp;{{device.name}}
-      </button>
-      <p>{{error_ble}}</p>
-    </ion-item-sliding>
-  </ion-list>
-  <button (click)="sendSMS()">SMS ki tu</button>
+<ion-content>
+  <div class="main-container">
+    <img class="background-image" src="../../../assets/Bluetooth/App-mockup-prototype_Config_Bijou-3.jpg">
+    <div class="connectContainer">
+      <div class="buttonConnect" (click)="openModal()">Connexion à la puce</div>
+    </div>
+  </div>
 </ion-content>

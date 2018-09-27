@@ -17,6 +17,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import {BLE} from "@ionic-native/ble";
 import {SMS} from "@ionic-native/sms";
+import {PopUpBle} from "../pages/bluetooth/connect/popup-ble/popup-ble";
+import {ReadyPage} from "../pages/bluetooth/ready/ready";
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import {SMS} from "@ionic-native/sms";
     BlePage,
     ActivatePage,
     ChipOnPage,
+    PopUpBle,
+    ReadyPage,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +48,8 @@ import {SMS} from "@ionic-native/sms";
     BlePage,
     ActivatePage,
     ChipOnPage,
+    PopUpBle,
+    ReadyPage,
   ],
   providers: [
     StatusBar,

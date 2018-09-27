@@ -1,18 +1,19 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { BlePage } from "../connect/bluetooth";
+import {HomePage} from "../../home/home";
 
 @Component({
-  selector: 'page-chip-on',
-  templateUrl: 'chip-on.html'
+  selector: 'page-ready',
+  templateUrl: 'ready.html'
 })
-export class ChipOnPage {
+export class ReadyPage {
 
   constructor(public navCtrl: NavController) {
 
   }
 
   nextPage() {
-    this.navCtrl.push( BlePage )
+    this.navCtrl.push( HomePage )
   }
 }
