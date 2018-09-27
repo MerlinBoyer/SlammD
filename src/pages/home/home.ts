@@ -6,7 +6,7 @@ import { BlePage } from '../bluetooth/bluetooth'
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
 })
 export class HomePage {
   public displayError: any;
@@ -19,12 +19,12 @@ export class HomePage {
     this.navCtrl.push( BlePage, {} );
   }
 
-  onClickButtonContact(){
-
+  onClickButtonContacts(){
+    console.log('contacts')
   }
 
   onClickButtonAlerts(){
-
+    console.log('Alerts')
   }
 
 
