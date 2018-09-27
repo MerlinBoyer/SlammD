@@ -5,10 +5,12 @@
     <title>LOURD LOURD</title>
 </head>
 <body>
-<p>tchatcheur</p>
+<p class="text">tchatcheur</p>
 <p>{{displayError}}</p>
-<button (click)="onClickButtonBLE()">BLE</button>
-<button>Alerts</button>
-<button>Contact</button>
+<div class="config-buttons-container">
+  <div (click)="onClickButtonBLE()" class="img-config-container"><img class="img-config" src="../../assets/Home/BluetoothConfigButton.png"></div>
+  <div (click)="onClickButtonAlerts()" class="img-config-container"><img class="img-config" src="../../assets/Home/AlertsConfigButton.png"></div>
+  <div (click)="onClickButtonContacts()" class="img-config-container"><img class="img-config" src="../../assets/Home/ContactsConfigButton.png"></div>
+</div>
 </body>
 </html>
