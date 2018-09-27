@@ -6,10 +6,10 @@ import {Geolocation} from "@ionic-native/geolocation";
 
 
 @Component({
-  selector: 'page-home',
+  selector: 'page-ble',
   templateUrl: 'bluetooth.html'
 })
-export class HomePage {
+export class BlePage {
   test;
   devices = [];
   isScanning = false;
