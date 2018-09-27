@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { BlePage } from '../bluetooth/bluetooth'
+import { ContactPage } from '../contact/contact'
+import {AlertsPage} from "../alerts/alerts";
 
 
 @Component({
@@ -12,7 +14,10 @@ export class HomePage {
   public displayError: any;
 
   constructor(public navCtrl: NavController){
+  }
 
+  onClickSettings(){
+    
   }
 
   onClickButtonBLE(){
@@ -20,11 +25,11 @@ export class HomePage {
   }
 
   onClickButtonContacts(){
-    console.log('contacts')
+    this.navCtrl.push( ContactPage, {} );
   }
 
   onClickButtonAlerts(){
-    console.log('Alerts')
+    this.navCtrl.push( AlertsPage, {} );
   }
 
 
