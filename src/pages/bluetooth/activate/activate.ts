@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { ChipOnPage} from "../chip-on/chip-on";
 
 @Component({
   selector: 'page-activate',
@@ -11,4 +12,7 @@ export class ActivatePage {
 
   }
 
+  nextPage() {
+    this.navCtrl.push( ChipOnPage )
+  }
 }
