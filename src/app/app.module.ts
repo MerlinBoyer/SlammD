@@ -8,14 +8,18 @@ import { HomePage } from "../pages/home/home";
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { TabsPage } from '../pages/tabs/tabs';
-import { BlePage } from '../pages/bluetooth/bluetooth';
 import {AlertsPage} from "../pages/alerts/alerts";
+import { BlePage } from '../pages/bluetooth/connect/bluetooth';
+import {ActivatePage} from "../pages/bluetooth/activate/activate";
+import { ChipOnPage } from "../pages/bluetooth/chip-on/chip-on";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import {BLE} from "@ionic-native/ble";
 import {SMS} from "@ionic-native/sms";
+import {PopUpBle} from "../pages/bluetooth/connect/popup-ble/popup-ble";
+import {ReadyPage} from "../pages/bluetooth/ready/ready";
 
 
 @NgModule({
@@ -27,6 +31,10 @@ import {SMS} from "@ionic-native/sms";
     HomePage,
     BlePage,
     AlertsPage,
+    ActivatePage,
+    ChipOnPage,
+    PopUpBle,
+    ReadyPage,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +48,11 @@ import {SMS} from "@ionic-native/sms";
     TabsPage,
     HomePage,
     BlePage,
-    AlertsPage
+    AlertsPage,
+    ActivatePage,
+    ChipOnPage,
+    PopUpBle,
+    ReadyPage,
   ],
   providers: [
     StatusBar,

@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { BlePage } from '../bluetooth/bluetooth'
 import { ContactPage } from '../contact/contact'
 import {AlertsPage} from "../alerts/alerts";
-
+import { ActivatePage} from "../bluetooth/activate/activate";
 
 @Component({
   selector: 'page-home',
@@ -21,7 +20,7 @@ export class HomePage {
   }
 
   onClickButtonBLE(){
-    this.navCtrl.push( BlePage, {} );
+    this.navCtrl.push( ActivatePage, {} );
   }
 
   onClickButtonContacts(){

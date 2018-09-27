@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { ModalController, NavController } from 'ionic-angular';
 import {BLE} from "@ionic-native/ble";
 import {SMS} from "@ionic-native/sms";
 import {Geolocation} from "@ionic-native/geolocation";
+import {ReadyPage} from "../../ready/ready";
 
 
 @Component({
-  selector: 'page-ble',
-  templateUrl: 'bluetooth.html'
+  selector: 'page-popup-ble',
+  templateUrl: 'popup-ble.html'
 })
-export class BlePage {
+export class PopUpBle {
   test;
   devices = [];
   isScanning = false;
@@ -19,7 +20,7 @@ export class BlePage {
   private displayError: any;
   public error_ble;
 
-  constructor(public navCtrl: NavController, private geolocation: Geolocation, private ble: BLE, public sms: SMS) {
+  constructor(public modalCtrl: ModalController, public navCtrl: NavController, private geolocation: Geolocation, private ble: BLE, public sms: SMS) {
     this.latitude = 0;
     this.longitude = 0;
     this.isScanning = false;
@@ -42,6 +43,7 @@ export class BlePage {
 
 
   scan() {
+    console.log("SCANNING")
     const ref = this;
     this.ble.isEnabled()
       .then( function () {
@@ -98,8 +100,15 @@ export class BlePage {
         console.log(JSON.stringify(val))
         console.log(connected_device.id)
         this.ble.startNotification(connected_device.id, '6E400001-B5A3-F393-E0A9-E50E24DCCA9E', '6E400003-B5A3-F393-E0A9-E50E24DCCA9E').subscribe(
-          val => console.log(this.bytesToString(val))
+          val => {
+            console.log(this.bytesToString(val))
+            if (this.bytesToString(val) === "1.00") {
+              console.log("ALERT!");
+              // this.sendSMS();
+            }
+          }
         )
+        this.navCtrl.push(ReadyPage)
       }
     )
   }
@@ -117,6 +126,6 @@ export class BlePage {
         //intent: 'INTENT' // send SMS inside a default SMS app
       }
     };
-    this.sms.send('0625336092', 'coucou toi', options)
+    this.sms.send('0625336092', 'ALERT', options)
   }
 }
