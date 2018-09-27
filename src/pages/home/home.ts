@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { BlePage } from '../bluetooth/bluetooth'
+import { BlePage } from '../bluetooth/connect/bluetooth'
 
 
 @Component({
