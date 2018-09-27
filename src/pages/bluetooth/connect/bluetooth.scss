@@ -23,10 +23,14 @@
 
 .connectContainer {
   position: relative;
-  bottom: -90%;
+  bottom: -80%;
   width: 100%;
   display: flex;
   .buttonConnect {
+    font-size: 20px;
     margin: auto;
+    padding: 5px;
+    border: 1px solid #2a2a2a;
+    border-radius: 3px;
   }
 }

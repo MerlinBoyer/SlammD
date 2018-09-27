@@ -13,6 +13,8 @@ export class ReadyPage {
   }
 
   nextPage() {
-    this.navCtrl.push( HomePage )
+    // this.navCtrl.push( HomePage )
+    this.navCtrl.setRoot(HomePage);
+    this.navCtrl.popToRoot()
   }
 }
