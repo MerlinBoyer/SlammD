@@ -22,6 +22,7 @@ export class HomePage {
   constructor(public navCtrl: NavController, private geolocation: Geolocation, private ble: BLE, public sms: SMS) {
     this.latitude = 0;
     this.longitude = 0;
+    this.isScanning = false;
   }
 
   onClickLocation() {
