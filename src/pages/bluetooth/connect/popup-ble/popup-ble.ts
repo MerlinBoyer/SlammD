@@ -104,7 +104,7 @@ export class PopUpBle {
             console.log(this.bytesToString(val))
             if (this.bytesToString(val) === "1.00") {
               console.log("ALERT!");
-              // this.sendSMS();
+              this.sendSMS();
             }
           }
         )
