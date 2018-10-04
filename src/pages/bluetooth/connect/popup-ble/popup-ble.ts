@@ -42,8 +42,14 @@ export class PopUpBle {
       console.log('finito localisation');
       let lien = this.raw_lien_maps + this.latitude + ',' + this.longitude;
       console.log('lien send : ', lien);
-      const options = this.sendSMS();
-      this.sms.send(this.phoneNumber, lien, options);
+      let optionssms = {
+        replaceLineBreaks: false, // true to replace \n by a new line, false by default
+        android: {
+          intent: '' // send SMS with the native android SMS messaging
+          //intent: '' // send SMS without open any other app
+          //intent: 'INTENT' // send SMS inside a default SMS app
+        }}
+      this.sms.send(this.phoneNumber, lien, optionssms);
     }).catch((error) => {
       this.displayError = error.message;
     });
@@ -126,18 +132,18 @@ export class PopUpBle {
   }
 
   sendSMS() {
-    const options = {
-      replaceLineBreaks: false, // true to replace \n by a new line, false by default
-      android: {
-        intent: '' // send SMS with the native android SMS messaging
-        //intent: '' // send SMS without open any other app
-        //intent: 'INTENT' // send SMS inside a default SMS app
-      }
-      return options;
-    };
     this.storage.get('phoneNumber').then(val => {
       this.phoneNumber = val;
-      this.setLocalisation();
+      let lien = 'URGENT \n Lisa se trouve en situation de danger, voici sa localisation:\n ' + this.raw_lien_maps + '44.858165' + ',' + '-0.558097' + '\n-MyEli';
+      console.log('lien send : ', lien);
+      let optionssms = {
+        replaceLineBreaks: false, // true to replace \n by a new line, false by default
+        android: {
+          intent: '' // send SMS with the native android SMS messaging
+          //intent: '' // send SMS without open any other app
+          //intent: 'INTENT' // send SMS inside a default SMS app
+        }}
+      this.sms.send(this.phoneNumber, lien, optionssms);
     });
   }
 }
