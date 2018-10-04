@@ -1,3 +1,26 @@
 page-contact {
 
 }
+
+.validate-container{
+display: flex;
+justify-content: center;
+}
+
+.input-container{
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.input-button{
+  width: 250px;
+}
+
+.save-button{
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 3px;
+}

@@ -9,7 +9,11 @@
 <ion-content>
   <div class="main-container">
     <div>Choisissez une personne à contater en cas d'urgence</div>
-    <ion-input placeholder="Numéro de portable" (input)='onInput($event.target.value)'></ion-input>
-    <button (click)="saveNumber()">Valider</button>
+    <div class="input-container">
+      <ion-input class="input-button" placeholder="Numéro de portable" (input)='onInput($event.target.value)'></ion-input>
+    </div>
+    <div class="validate-container">
+      <button class="save-button" (click)="saveNumber()">Valider</button>
+    </div>
   </div>
 </ion-content>
