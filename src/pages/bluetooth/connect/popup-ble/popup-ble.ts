@@ -21,6 +21,7 @@ export class PopUpBle {
   private displayError: any;
   public error_ble;
   public phoneNumber = null;
+  public raw_lien_maps = 'http://www.google.com/maps/place/';
 
   constructor(public modalCtrl: ModalController, public navCtrl: NavController, private geolocation: Geolocation, private ble: BLE, public sms: SMS, public storage: Storage) {
     this.latitude = 0;
@@ -28,8 +29,7 @@ export class PopUpBle {
     this.isScanning = false;
   }
 
-  onClickLocation() {
-    this.indicator = !this.indicator;
+  setLocalisation() {
     var options = {
       enableHighAccuracy: true,
       timeout: 5000,
@@ -38,6 +38,8 @@ export class PopUpBle {
     this.geolocation.getCurrentPosition( options ).then((resp) => {
       this.latitude = resp.coords.latitude;
       this.longitude = resp.coords.longitude;
+      console.log('localisation : lat ', this.latitude, ' long : ', this.longitude);
+      return;
     }).catch((error) => {
       this.displayError = error.message;
     });
@@ -130,11 +132,11 @@ export class PopUpBle {
     };
     this.storage.get('phoneNumber').then(val => {
       this.phoneNumber = val;
-      console.log('phone number called is: '+this.phoneNumber);
-      this.sms.send(this.phoneNumber, 'ALERT', options);
+      this.setLocalisation();
+      console.log('finito localisation');
+      let lien = this.raw_lien_maps + this.latitude + ',' + this.longitude;
+      console.log('lien send : ', lien);
+      this.sms.send(this.phoneNumber, lien, options);
     });
-    // if( this.phoneNumber === null) {
-    //   return;
-    // }
   }
 }
