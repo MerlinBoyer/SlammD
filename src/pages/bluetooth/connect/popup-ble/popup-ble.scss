@@ -1,5 +1,26 @@
+.main-container {
+  width: 100%;
+  height: 100%;
+}
+
 .button-scan{
-  
+  padding: 10px;
+  border-radius: 3px;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+}
+
+.button-container{
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  display: flex;
+}
+
+.isScanning-container{
+  display: flex;
+  justify-content: center;
 }
 
 .background-image {
