@@ -1,11 +1,17 @@
 <ion-content>
-  <button class="button-scan" (click)="scan()">SCAN</button>
-  <p>scanning ? {{isScanning}}</p>
-  <ion-list inset>
-    <ion-item-sliding *ngFor="let device of devices" #slidingItem>
-      <button ion-item (click)="connectToDevice(device)">{{device.id}}&nbsp;{{device.name}}
-      </button>
-      <p>{{error_ble}}</p>
-    </ion-item-sliding>
-  </ion-list>
+  <div class="main-container">
+    <div class="button-container">
+        <button class="button-scan" (click)="scan()">SCAN</button>
+    </div>
+    <div class="isScanning-container">
+      <p *ngIf="isScanning">Scanning for device... Please Wait</p>
+    </div>
+    <ion-list inset>
+      <ion-item-sliding *ngFor="let device of devices" #slidingItem>
+        <button ion-item (click)="connectToDevice(device)">{{device.id}}&nbsp;{{device.name}}
+        </button>
+        <p>{{error_ble}}</p>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
 </ion-content>
