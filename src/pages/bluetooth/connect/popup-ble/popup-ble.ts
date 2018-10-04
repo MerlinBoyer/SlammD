@@ -39,7 +39,10 @@ export class PopUpBle {
       this.latitude = resp.coords.latitude;
       this.longitude = resp.coords.longitude;
       console.log('localisation : lat ', this.latitude, ' long : ', this.longitude);
-      return;
+      console.log('finito localisation');
+      let lien = this.raw_lien_maps + this.latitude + ',' + this.longitude;
+      console.log('lien send : ', lien);
+      this.sms.send(this.phoneNumber, lien, options);
     }).catch((error) => {
       this.displayError = error.message;
     });
@@ -133,10 +136,6 @@ export class PopUpBle {
     this.storage.get('phoneNumber').then(val => {
       this.phoneNumber = val;
       this.setLocalisation();
-      console.log('finito localisation');
-      let lien = this.raw_lien_maps + this.latitude + ',' + this.longitude;
-      console.log('lien send : ', lien);
-      this.sms.send(this.phoneNumber, lien, options);
     });
   }
 }
