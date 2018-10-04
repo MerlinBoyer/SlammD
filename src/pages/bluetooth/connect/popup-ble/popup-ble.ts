@@ -4,6 +4,7 @@ import {BLE} from "@ionic-native/ble";
 import {SMS} from "@ionic-native/sms";
 import {Geolocation} from "@ionic-native/geolocation";
 import {ReadyPage} from "../../ready/ready";
+import {Storage} from "@ionic/storage";
 
 
 @Component({
@@ -19,8 +20,9 @@ export class PopUpBle {
   public indicator: boolean = false;
   private displayError: any;
   public error_ble;
+  public phoneNumber = null;
 
-  constructor(public modalCtrl: ModalController, public navCtrl: NavController, private geolocation: Geolocation, private ble: BLE, public sms: SMS) {
+  constructor(public modalCtrl: ModalController, public navCtrl: NavController, private geolocation: Geolocation, private ble: BLE, public sms: SMS, public storage: Storage) {
     this.latitude = 0;
     this.longitude = 0;
     this.isScanning = false;
@@ -126,6 +128,13 @@ export class PopUpBle {
         //intent: 'INTENT' // send SMS inside a default SMS app
       }
     };
-    this.sms.send('0625336092', 'ALERT', options)
+    this.storage.get('phoneNumber').then(val => {
+      this.phoneNumber = val;
+      console.log('phone number called is: '+this.phoneNumber);
+      this.sms.send(this.phoneNumber, 'ALERT', options);
+    });
+    // if( this.phoneNumber === null) {
+    //   return;
+    // }
   }
 }

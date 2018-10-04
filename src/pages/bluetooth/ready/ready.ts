@@ -9,7 +9,6 @@ import {HomePage} from "../../home/home";
 export class ReadyPage {
 
   constructor(public navCtrl: NavController) {
-
   }
 
   nextPage() {

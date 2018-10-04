@@ -21,6 +21,8 @@ import {SMS} from "@ionic-native/sms";
 import {PopUpBle} from "../pages/bluetooth/connect/popup-ble/popup-ble";
 import {ReadyPage} from "../pages/bluetooth/ready/ready";
 
+import { IonicStorageModule } from '@ionic/storage';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import {ReadyPage} from "../pages/bluetooth/ready/ready";
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
