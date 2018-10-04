@@ -42,6 +42,7 @@ export class PopUpBle {
       console.log('finito localisation');
       let lien = this.raw_lien_maps + this.latitude + ',' + this.longitude;
       console.log('lien send : ', lien);
+      const options = this.sendSMS();
       this.sms.send(this.phoneNumber, lien, options);
     }).catch((error) => {
       this.displayError = error.message;
@@ -132,6 +133,7 @@ export class PopUpBle {
         //intent: '' // send SMS without open any other app
         //intent: 'INTENT' // send SMS inside a default SMS app
       }
+      return options;
     };
     this.storage.get('phoneNumber').then(val => {
       this.phoneNumber = val;
